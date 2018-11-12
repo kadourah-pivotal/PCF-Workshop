@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Steeltoe.Management.EndpointBase</name>
+    </assembly>
+    <members>
+        <member name="T:Steeltoe.Management.Endpoint.AbstractEndpoint`1">
+            <summary>
+            Base class for management endpoints
+            </summary>
+            <typeparam name="TResult">Type of response returned from calls to this endpoint</typeparam>
+        </member>
+        <member name="T:Steeltoe.Management.Endpoint.AbstractEndpoint`2">
+            <summary>
+            Base class for endpoints that allow POST requests
+            </summary>
+            <typeparam name="TResult">Type of response returned from calls to this endpoint</typeparam>
+            <typeparam name="TRequest">Type of request that can be passed to this endpoint</typeparam>
+        </member>
+        <member name="M:Steeltoe.Management.Endpoint.AbstractEndpoint`2.#ctor(Steeltoe.Management.Endpoint.IEndpointOptions)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Management.Endpoint.AbstractEndpoint`2"/> class.
+            </summary>
+            <param name="options">Endpoint configuration options</param>
+        </member>
+        <member name="M:Steeltoe.Management.Endpoint.Loggers.LoggersChangeRequest.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Management.Endpoint.Loggers.LoggersChangeRequest"/> class.
+            </summary>
+            <param name="name">Name of the logger to update</param>
+            <param name="level">Minimum level to log - pass null to reset</param>
+        </member>
+        <member name="P:Steeltoe.Management.Endpoint.Loggers.LoggersChangeRequest.Name">
+            <summary>
+            Gets name(space) of logger level to change
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Management.Endpoint.Loggers.LoggersChangeRequest.Level">
+            <summary>
+            Gets minimum level to log, null to reset back to original
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Management.EndpointBase.Utils.CompressFile(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Applies GZip compression to a file on disk, returns it as a stream and deletes the original file
+            </summary>
+            <param name="filename">Path of file to load</param>
+            <param name="gzFilename">Name to use for compressed output</param>
+            <param name="logger"><see cref="T:Microsoft.Extensions.Logging.ILogger"/> for recording exceptions</param>
+            <returns>A filestream with the file's compressed contents</returns>
+        </member>
+        <member name="M:Steeltoe.Management.EndpointBase.Utils.CompressFileAsync(System.String,System.String,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Applies GZip compression to a file on disk, returns it as a stream and deletes the original file
+            </summary>
+            <param name="filename">Path of file to load</param>
+            <param name="gzFilename">Name to use for compressed output</param>
+            <param name="logger"><see cref="T:Microsoft.Extensions.Logging.ILogger"/> for recording exceptions</param>
+            <returns>A filestream with the file's compressed contents</returns>
+        </member>
+    </members>
+</doc>

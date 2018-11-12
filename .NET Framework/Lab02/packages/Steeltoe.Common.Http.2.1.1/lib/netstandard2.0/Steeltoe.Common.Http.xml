@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Steeltoe.Common.Http</name>
+    </assembly>
+    <members>
+        <member name="T:Steeltoe.Common.Http.Discovery.DiscoveryHttpClientBuilderExtensions">
+            <summary>
+            Extension method for configuring <see cref="T:Steeltoe.Common.Http.Discovery.DiscoveryHttpMessageHandler"/> in <see cref="T:System.Net.Http.HttpClient"/> message handler pipelines
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Http.Discovery.DiscoveryHttpClientBuilderExtensions.AddServiceDiscovery(Microsoft.Extensions.DependencyInjection.IHttpClientBuilder)">
+            <summary>
+            Adds a <see cref="T:Steeltoe.Common.Http.Discovery.DiscoveryHttpMessageHandler"/> for performing service discovery
+            </summary>
+            <param name="builder">The <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder"/>.</param>
+            <returns>An <see cref="T:Microsoft.Extensions.DependencyInjection.IHttpClientBuilder"/> that can be used to configure the client.</returns>
+        </member>
+        <member name="T:Steeltoe.Common.Http.Discovery.DiscoveryHttpMessageHandler">
+            <summary>
+            A <see cref="T:System.Net.Http.DelegatingHandler"/> implementation that performs Service Discovery
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Http.Discovery.DiscoveryHttpMessageHandler.#ctor(Steeltoe.Common.Discovery.IDiscoveryClient,Microsoft.Extensions.Logging.ILogger{Steeltoe.Common.Discovery.DiscoveryHttpClientHandler})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Common.Http.Discovery.DiscoveryHttpMessageHandler"/> class.
+            </summary>
+            <param name="discoveryClient">Service discovery client to use - provided by calling services.AddDiscoveryClient(Configuration)</param>
+            <param name="logger">ILogger for capturing logs from Discovery operations</param>
+        </member>
+        <member name="M:Steeltoe.Common.Http.Discovery.DiscoveryHttpMessageHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Steeltoe.Common.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+            <summary>
+            Convert an object to JSON and POST it
+            </summary>
+            <typeparam name="T">Type of object to serialize</typeparam>
+            <param name="httpClient">HttpClient doing the sending</param>
+            <param name="url">Url to POST to</param>
+            <param name="data">Object to send</param>
+            <returns>Task to be awaited</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Http.HttpClientExtensions.PostAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Convert an object to JSON and POST it
+            </summary>
+            <typeparam name="T">Type of object to serialize</typeparam>
+            <param name="httpClient">HttpClient doing the sending</param>
+            <param name="url">Url to POST to</param>
+            <param name="data">Object to send</param>
+            <param name="settings">Your Serializer Settings</param>
+            <returns>Task to be awaited</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0)">
+            <summary>
+            Convert an object to JSON and PUT it
+            </summary>
+            <typeparam name="T">the type of the data</typeparam>
+            <param name="httpClient">provided HttpClient</param>
+            <param name="url">the http endpoint to Put to</param>
+            <param name="data">the data to put</param>
+            <returns>Task to be awaited</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Http.HttpClientExtensions.PutAsJsonAsync``1(System.Net.Http.HttpClient,System.String,``0,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Convert an object to JSON and PUT it
+            </summary>
+            <typeparam name="T">the type of the data</typeparam>
+            <param name="httpClient">provided HttpClient</param>
+            <param name="url">the http endpoint to Put to</param>
+            <param name="data">the data to put</param>
+            <param name="settings">the serialization setttings to use</param>
+            <returns>Task to be awaited</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Http.HttpClientExtensions.ReadAsJsonAsync``1(System.Net.Http.HttpContent)">
+            <summary>
+            Convert JSON in HttpContent to a POCO
+            </summary>
+            <typeparam name="T">Type to deserialize into</typeparam>
+            <param name="content">Content to be deserialized</param>
+            <returns>Your data, typed as your type</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Http.HttpClientExtensions.ReadAsJsonAsync``1(System.Net.Http.HttpContent,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            Convert JSON in HttpContent to a POCO
+            </summary>
+            <typeparam name="T">Type to deserialize into</typeparam>
+            <param name="content">Content to be deserialized</param>
+            <param name="settings">Your Serializer Settings</param>
+            <returns>Your data, typed as your type</returns>
+        </member>
+    </members>
+</doc>

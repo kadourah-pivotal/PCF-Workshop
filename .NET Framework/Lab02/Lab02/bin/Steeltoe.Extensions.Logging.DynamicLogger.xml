@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Steeltoe.Extensions.Logging.DynamicLogger</name>
+    </assembly>
+    <members>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerConfigurationExtensions.FromConfiguration(Microsoft.Extensions.Logging.Console.ConsoleLoggerSettings,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Configure console logger settings from configuration
+            </summary>
+            <param name="settings">Logger settings object to be updated</param>
+            <param name="configuration">Application configuration. Expects values prefixed with "Logging"</param>
+            <returns>Configured console logger settings</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.#ctor(Microsoft.Extensions.Logging.Console.IConsoleLoggerSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Extensions.Logging.DynamicLoggerProvider"/> class.
+            </summary>
+            <param name="settings">Logging Settings</param>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.#ctor(System.Func{System.String,Microsoft.Extensions.Logging.LogLevel,System.Boolean},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Extensions.Logging.DynamicLoggerProvider"/> class.
+            </summary>
+            <param name="filter">Default log level filter</param>
+            <param name="includeScopes">Enable log scoping</param>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.Extensions.Logging.Console.ConsoleLoggerOptions},Microsoft.Extensions.Options.IOptionsMonitor{Microsoft.Extensions.Logging.LoggerFilterOptions},System.Collections.Generic.IEnumerable{Steeltoe.Extensions.Logging.IDynamicMessageProcessor})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Extensions.Logging.DynamicLoggerProvider"/> class.
+            </summary>
+            <param name="options">Pass-through to ConsoleLoggerProvider constructor</param>
+            <param name="filterOptions">Logger filters</param>
+            <param name="messageProcessors">message processors to apply to message</param>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.CreateLogger(System.String)">
+            <summary>
+            Create or retrieve an instance of an ILogger
+            </summary>
+            <param name="name">Class name that will be using the logger</param>
+            <returns>A logger with level filtering for a given class</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.GetLoggerConfigurations">
+            <summary>
+            Get a list of logger configurations
+            </summary>
+            <returns>Namespaces and loggers with minimum log levels</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.SetLogLevel(System.String,System.Nullable{Microsoft.Extensions.Logging.LogLevel})">
+            <summary>
+            Sets minimum log level for a given category and its decendants - resets to configured value if level is null
+            </summary>
+            <param name="category">Namespace/qualified class name</param>
+            <param name="level">Minimum level to log, pass null to reset</param>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.GetFilter(System.String)">
+            <summary>
+            Get or create the most applicable logging filter
+            </summary>
+            <param name="name">Fully qualified logger name</param>
+            <returns>A filter function for log level</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.GetEffectiveLevel(System.String)">
+            <summary>
+            Determine the level a logger is set to log at right now
+            </summary>
+            <param name="name">Namespace/qualified class name</param>
+            <returns>Minimum logging level</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.GetLogLevelFromFilter(System.String,System.Func{System.String,Microsoft.Extensions.Logging.LogLevel,System.Boolean})">
+            <summary>
+            Converts a filter function to a LogLevel
+            </summary>
+            <param name="category">Namespace/class to check</param>
+            <param name="filter">Function to evaluate</param>
+            <returns>Minimum log level to be logged by this category of logger</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.GetKeyPrefixes(System.String)">
+            <summary>
+            Get parent namespaces
+            </summary>
+            <param name="name">Fully namespaced class name</param>
+            <returns>List of parental namespaces</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.DynamicLoggerProvider.GetConfiguredLevel(System.String)">
+            <summary>
+            Get the log level that was configured when the app started
+            </summary>
+            <param name="name">Namespace/qualified class name</param>
+            <returns>Log level from default filter, value from settings or else null</returns>
+        </member>
+        <member name="T:Steeltoe.Extensions.Logging.IDynamicMessageProcessor">
+            <summary>
+            Provides the ability to process each log message before it is sent to the Console
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.IDynamicMessageProcessor.Process(System.String)">
+            <summary>
+            Called for each log message just after the parameters have been formatted into the log string
+            but before the time stamp, category, and level have been applied.
+            </summary>
+            <param name="inputLogMessage">The incoming log message</param>
+            <returns>The updated log message</returns>
+        </member>
+        <member name="M:Steeltoe.Extensions.Logging.LoggerConfiguration.#ctor(System.String,System.Nullable{Microsoft.Extensions.Logging.LogLevel},Microsoft.Extensions.Logging.LogLevel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.Extensions.Logging.LoggerConfiguration"/> class.
+            </summary>
+            <param name="name">Namespace</param>
+            <param name="configured">Original log level</param>
+            <param name="effective">Currently effective log level</param>
+        </member>
+        <member name="P:Steeltoe.Extensions.Logging.LoggerConfiguration.Name">
+            <summary>
+            Gets namespace this configuration is applied to
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Extensions.Logging.LoggerConfiguration.ConfiguredLevel">
+            <summary>
+            Gets level from base app configuration (if present)
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Extensions.Logging.LoggerConfiguration.EffectiveLevel">
+            <summary>
+            Gets running level of the logger
+            </summary>
+        </member>
+    </members>
+</doc>

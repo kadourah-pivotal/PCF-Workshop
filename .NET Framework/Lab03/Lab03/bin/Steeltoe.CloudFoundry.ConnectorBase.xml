@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Steeltoe.CloudFoundry.ConnectorBase</name>
+    </assembly>
+    <members>
+        <member name="P:Steeltoe.CloudFoundry.Connector.AbstractServiceConnectorOptions.UrlEncodedCredentials">
+            <summary>
+            Gets or sets a value indicating whether your service broker UrlEncodes service credentials
+            </summary>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.Redis.RedisCacheConfigurer.Configure(Steeltoe.CloudFoundry.Connector.Services.RedisServiceInfo,Steeltoe.CloudFoundry.Connector.Redis.RedisCacheConnectorOptions)">
+            <summary>
+            Create a configuration object to be used to connect to Redis
+            </summary>
+            <param name="si">Redis Service Info</param>
+            <param name="configuration">Configuration parameters</param>
+            <returns>A dynamically typed object for use connecting to Redis</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.Redis.RedisCacheConnectorOptions.ToMicrosoftExtensionObject(System.Type)">
+            <summary>
+            Get a Redis configuration object for use with Microsoft.Extensions.Caching.Redis
+            </summary>
+            <param name="optionsType">Expects Microsoft.Extensions.Caching.Redis.RedisCacheOptions</param>
+            <returns>This object typed as RedisCacheOptions</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.Redis.RedisCacheConnectorOptions.ToStackExchangeObject(System.Type)">
+            <summary>
+            Get a Redis configuration object for use with StackExchange.Redis
+            </summary>
+            <param name="optionsType">Expects StackExchange.Redis.ConfigurationOptions</param>
+            <returns>This object typed as ConfigurationOptions</returns>
+            <remarks>Includes comma in password detection and workaround for https://github.com/SteeltoeOSS/Connectors/issues/10 </remarks>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.Redis.RedisServiceConnectorFactory.#ctor(Steeltoe.CloudFoundry.Connector.Services.RedisServiceInfo,Steeltoe.CloudFoundry.Connector.Redis.RedisCacheConnectorOptions,System.Type,System.Type,System.Reflection.MethodInfo)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Steeltoe.CloudFoundry.Connector.Redis.RedisServiceConnectorFactory"/> class.
+            Factory for creating Redis connections with either Microsoft.Extensions.Caching.Redis or StackExchange.Redis
+            </summary>
+            <param name="sinfo">Service Info</param>
+            <param name="config">Service Configuration</param>
+            <param name="connectionType">Redis connection Type</param>
+            <param name="optionsType">Options Type used to establish connection</param>
+            <param name="initalizer">Method used to open connection</param>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.Redis.RedisServiceConnectorFactory.Create(System.IServiceProvider)">
+            <summary>
+            Open the Redis connection
+            </summary>
+            <param name="provider">IServiceProvider</param>
+            <returns>Initialized Redis connection</returns>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.MicrosoftInterface">
+            <summary>
+            Gets IDistributedCache from a Microsoft Cache library
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.MicrosoftImplementation">
+            <summary>
+            Gets RedisCache from a Microsoft Cache library
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.MicrosoftOptions">
+            <summary>
+            Gets RedisCacheOptions from a Microsoft Cache library
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.StackExchangeInterface">
+            <summary>
+            Gets IConnectionMultiplexer from a StackExchange Redis library
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.StackExchangeImplementation">
+            <summary>
+            Gets ConnectionMultiplexer from a StackExchange Redis library
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.StackExchangeCommandFlagsNames">
+            <summary>
+            Gets CommandFlags from StackExchange Redis library
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.StackExchangeOptions">
+            <summary>
+            Gets ConfigurationOptions from a StackExchange Redis library
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Redis.RedisTypeLocator.StackExchangeInitializer">
+            <summary>
+            Gets the Connect method from a StackExchange Redis library
+            </summary>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.CloudFoundryServiceInfoCreator.GetServiceInfos``1">
+            <summary>
+            Get all Service Infos of type
+            </summary>
+            <typeparam name="SI">Service Info Type to retrieve</typeparam>
+            <returns>List of matching Service Infos</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.CloudFoundryServiceInfoCreator.GetServiceInfo``1(System.String)">
+            <summary>
+            Get a named service
+            </summary>
+            <typeparam name="SI">Service Info type</typeparam>
+            <param name="name">Service name</param>
+            <returns>Service info or null</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.CloudFoundryServiceInfoCreator.GetServiceInfos(System.Type)">
+            <summary>
+            Get all Service Infos of type
+            </summary>
+            <param name="type">Service Info Type to retrieve</param>
+            <returns>List of matching Service Infos</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.CloudFoundryServiceInfoCreator.GetServiceInfo(System.String)">
+            <summary>
+            Get a named Service Info
+            </summary>
+            <param name="name">Name of service info</param>
+            <returns>Service info</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.ConnectorHelpers.FindAssembly(System.String)">
+            <summary>
+            Find an assembly
+            </summary>
+            <param name="name">Name of the assembly to find</param>
+            <returns>A representation of the assembly</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.ConnectorHelpers.FindType(System.String[],System.String[])">
+            <summary>
+            Search a list of assemblies for the first matching type
+            </summary>
+            <param name="assemblyNames">List of assembly names to search</param>
+            <param name="typeNames">List of suitable types</param>
+            <returns>An appropriate type</returns>
+            <remarks>Great for finding an implementation type that could have one or more names in one or more assemblies</remarks>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.ConnectorHelpers.FindType(System.Reflection.Assembly,System.String)">
+            <summary>
+            Find a type from within an assembly
+            </summary>
+            <param name="assembly">The assembly to search</param>
+            <param name="typeName">The name of the type to retrieve</param>
+            <returns>The type</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.ConnectorHelpers.FindMethod(System.Type,System.String,System.Type[])">
+            <summary>
+            Find a method within a type
+            </summary>
+            <param name="type">The type to search</param>
+            <param name="methodName">The name of the method</param>
+            <param name="parameters">(Optional) The parameters in the signature</param>
+            <returns>The method you're searching for</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.ConnectorHelpers.Invoke(System.Reflection.MethodBase,System.Object,System.Object[])">
+            <summary>
+            Invoke a function
+            </summary>
+            <param name="member">The method to execute</param>
+            <param name="instance">Instance of an object, if required by the method</param>
+            <param name="args">Arguments to pass to the method</param>
+            <returns>Results of method call</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.ConnectorHelpers.CreateInstance(System.Type,System.Object[])">
+            <summary>
+            Create an instance of a type
+            </summary>
+            <param name="t">Type to instantiate</param>
+            <param name="args">Constructor parameters</param>
+            <returns>New instance of desired type</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.ConnectorHelpers.TrySetProperty(System.Object,System.String,System.Object)">
+            <summary>
+            Try to set a property on an object
+            </summary>
+            <param name="obj">Object to set a value on</param>
+            <param name="property">Property to set</param>
+            <param name="value">Value to use</param>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.IConfigurationExtensions.GetServiceInfos``1(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Get configuration info for all services of a given service type
+            </summary>
+            <typeparam name="SI">Service info type you're looking for</typeparam>
+            <param name="config">Configuration to search</param>
+            <returns>List of service infos</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.IConfigurationExtensions.GetServiceInfos(Microsoft.Extensions.Configuration.IConfiguration,System.Type)">
+            <summary>
+            Get configuration info for all services of a given service type
+            </summary>
+            <param name="config">Configuration to search</param>
+            <param name="infoType">Type to search for</param>
+            <returns>A list of relevant <see cref="T:Steeltoe.CloudFoundry.Connector.Services.IServiceInfo"/></returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.IConfigurationExtensions.GetServiceInfo(Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            Get service info when you know the Id
+            </summary>
+            <param name="config">Configuration to search</param>
+            <param name="id">Id of service</param>
+            <returns>Requested implementation of <see cref="T:Steeltoe.CloudFoundry.Connector.Services.IServiceInfo"/></returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.IConfigurationExtensions.GetServiceInfo``1(Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            Get service info of a given type when you know the Id
+            </summary>
+            <typeparam name="SI">Service info type you're looking for</typeparam>
+            <param name="config">Configuration to search</param>
+            <param name="id">Id of service</param>
+            <returns>Requested implementation of <see cref="T:Steeltoe.CloudFoundry.Connector.Services.IServiceInfo"/></returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.IConfigurationExtensions.GetSingletonServiceInfo``1(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Get Service Info from IConfiguration
+            </summary>
+            <typeparam name="SI">Type of Service Info to return</typeparam>
+            <param name="config">Configuration to retrieve service info from</param>
+            <exception cref="T:Steeltoe.CloudFoundry.Connector.ConnectorException">Thrown when multple matching services are found</exception>
+            <returns>Information requried to connect to provisioned service</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.IConfigurationExtensions.GetRequiredServiceInfo``1(Microsoft.Extensions.Configuration.IConfiguration,System.String)">
+            <summary>
+            Get info for a named service
+            </summary>
+            <typeparam name="SI">Type of Service Info to return</typeparam>
+            <param name="config">Configuration to retrieve service info from</param>
+            <param name="serviceName">Name of the service</param>
+            <exception cref="T:Steeltoe.CloudFoundry.Connector.ConnectorException">Thrown when service info isn't found</exception>
+            <returns>Information requried to connect to provisioned service</returns>
+        </member>
+        <member name="M:Steeltoe.CloudFoundry.Connector.IConfigurationExtensions.HasCloudFoundryServiceConfigurations(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Evaluate whether an IConfiguration contains services bound by Cloud Foundry
+            </summary>
+            <param name="config">Application Configuration</param>
+            <returns>true if vcap:services found in config, othwerwise false</returns>
+        </member>
+        <member name="T:Steeltoe.CloudFoundry.Connector.RabbitMQ.RabbitMQTypeLocator">
+            <summary>
+            Assemblies and types used for interacting with RabbitMQ
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.RabbitMQ.RabbitMQTypeLocator.Assemblies">
+            <summary>
+            List of supported RabbitMQ assemblies
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.RabbitMQ.RabbitMQTypeLocator.ConnectionInterfaceTypeNames">
+            <summary>
+            List of RabbitMQ Interface types
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.RabbitMQ.RabbitMQTypeLocator.ConnectionImplementationTypeNames">
+            <summary>
+            List of RabbitMQ Implementation types
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.RabbitMQ.RabbitMQTypeLocator.IConnectionFactory">
+            <summary>
+            Gets IConnectionFactory from a RabbitMQ Library
+            </summary>
+            <exception cref="T:Steeltoe.CloudFoundry.Connector.ConnectorException">When type is not found</exception>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.RabbitMQ.RabbitMQTypeLocator.ConnectionFactory">
+            <summary>
+            Gets ConnectionFactory from a RabbitMQ Library
+            </summary>
+            <exception cref="T:Steeltoe.CloudFoundry.Connector.ConnectorException">When type is not found</exception>
+        </member>
+        <member name="T:Steeltoe.CloudFoundry.Connector.MySql.MySqlProviderConnectorOptions">
+            <summary>
+            Currently enabling properties supported by BOTH of these connectors:
+            https://dev.mysql.com/doc/connector-net/en/connector-net-connection-options.html
+            https://mysql-net.github.io/MySqlConnector/tutorials/migrating-from-connector-net/
+            </summary>
+        </member>
+        <member name="T:Steeltoe.CloudFoundry.Connector.Relational.MySql.MySqlTypeLocator">
+            <summary>
+            Assemblies and types used for interacting with MySQL
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.Relational.MySql.MySqlTypeLocator.Assemblies">
+            <summary>
+            List of supported MySQL assemblies
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.Relational.MySql.MySqlTypeLocator.ConnectionTypeNames">
+            <summary>
+            List of MySQL types that implement IDbConnection
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Relational.MySql.MySqlTypeLocator.MySqlConnection">
+            <summary>
+            Gets MySqlConnection from a MySQL Library
+            </summary>
+            <exception cref="T:Steeltoe.CloudFoundry.Connector.ConnectorException">When type is not found</exception>
+        </member>
+        <member name="T:Steeltoe.CloudFoundry.Connector.Relational.PostgreSql.PostgreSqlTypeLocator">
+            <summary>
+            Assemblies and types used for interacting with PostgreSQL
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.Relational.PostgreSql.PostgreSqlTypeLocator.Assemblies">
+            <summary>
+            List of supported PostgreSQL assemblies
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.Relational.PostgreSql.PostgreSqlTypeLocator.ConnectionTypeNames">
+            <summary>
+            List of PostgreSQL types that implement IDbConnection
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Relational.PostgreSql.PostgreSqlTypeLocator.NpgsqlConnection">
+            <summary>
+            Gets NpgsqlConnection from a PostgreSQL Library
+            </summary>
+            <exception cref="T:Steeltoe.CloudFoundry.Connector.ConnectorException">When type is not found</exception>
+        </member>
+        <member name="T:Steeltoe.CloudFoundry.Connector.Relational.SqlServer.SqlServerTypeLocator">
+            <summary>
+            Assemblies and types used for interacting with Microsoft SQL Server
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.Relational.SqlServer.SqlServerTypeLocator.Assemblies">
+            <summary>
+            List of supported SQL Server Client assemblies
+            </summary>
+        </member>
+        <member name="F:Steeltoe.CloudFoundry.Connector.Relational.SqlServer.SqlServerTypeLocator.ConnectionTypeNames">
+            <summary>
+            List of SQL Server types that implement IDbConnection
+            </summary>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.Relational.SqlServer.SqlServerTypeLocator.SqlConnection">
+            <summary>
+            Gets SqlConnection from a SQL Server Library
+            </summary>
+            <exception cref="T:Steeltoe.CloudFoundry.Connector.ConnectorException">When type is not found</exception>
+        </member>
+        <member name="P:Steeltoe.CloudFoundry.Connector.SqlServer.SqlServerProviderConnectorOptions.Timeout">
+            <summary>
+            Gets or sets the length of time (in seconds) to wait for a connection to the server before terminating the attempt and generating an error.
+            </summary>
+            <remarks>Default value is 15</remarks>
+        </member>
+    </members>
+</doc>

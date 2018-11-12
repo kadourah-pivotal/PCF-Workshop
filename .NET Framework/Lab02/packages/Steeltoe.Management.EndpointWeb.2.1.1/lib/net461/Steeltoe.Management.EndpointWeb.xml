@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Steeltoe.Management.EndpointWeb</name>
+    </assembly>
+    <members>
+        <member name="M:Steeltoe.Management.Endpoint.Handler.MetricsHandler.ParseTags(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Turn a querystring into a dictionary
+            </summary>
+            <param name="query">Request querystring</param>
+            <returns>List of key-value pairs</returns>
+        </member>
+        <member name="M:Steeltoe.Management.Endpoint.Handler.MetricsHandler.ParseTag(System.String)">
+            <summary>
+            Split a key-value pair out from a single string
+            </summary>
+            <param name="kvp">Colon-delimited key-value pair</param>
+            <returns>A pair of strings</returns>
+        </member>
+    </members>
+</doc>
