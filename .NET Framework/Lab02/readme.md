@@ -1,18 +1,18 @@
-﻿#Workshop highlighting how to use [steeltoe](https://steeltoe.io) in your .net application
+﻿# Workshop highlighting how to use [steeltoe](https://steeltoe.io) in your .net application
 
-###1. Create new visual studio Project (MVC and API)
+### 1. Create new visual studio Project (MVC and API)
 
-###2. Add the following Nuget Packages:
+### 2. Add the following Nuget Packages:
 Steeltoe.Extensions.Logging.DynamicLogger
 Steeltoe.Management.EndpointWeb
 
-###3. Add the following under app_start:
+### 3. Add the following under app_start:
 LoggingConfig.cs
 ApplicationConfig.cs file
 
 
 
-###4. update Application_Start in global.asax and the below
+### 4. update Application_Start in global.asax and the below
 
 		// Create applications configuration
             ApplicationConfig.Configure("development");
@@ -37,7 +37,7 @@ ApplicationConfig.cs file
             ManagementConfig.Stop();
         }
 
-###5. Update References in global.asax
+### 5. Update References in global.asax
 
 using System;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 
 
-###6. in Home cotroller add the following:
+### 6. in Home cotroller add the following:
 
  private ILogger<HomeController> _logger;
 
@@ -73,6 +73,6 @@ using System.Web.Routing;
             return View();
             
         }
-###7. cf push
+### 7. cf push
 
-###8. Login to app manager
+### 8. Login to app manager
