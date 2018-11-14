@@ -1,9 +1,9 @@
 ﻿1.  Add Nuget
 Steeltoe.CloudFoundry.ConnectorAutofac
-	//Steeltoe.CloudFoundry.ConnectorBase
-	StackExchange.Redis.StrongName
+	MySql.Data
+	MySql.Data.Entity
 	Autofac.Mvc5
-	Microsoft.Extensions.Caching.Redis
+	
 	Autofac.WebApi2
 	
 2.  Add ServerConfig.cs under app_start

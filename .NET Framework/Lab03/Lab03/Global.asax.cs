@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -10,11 +6,14 @@ using System.Web.Routing;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Autofac.Integration.WebApi;
-
-
+using Steeltoe.CloudFoundry.Connector.MySql.EF6;
+using Steeltoe.CloudFoundry.Connector.MySql;
 using Steeltoe.CloudFoundry.ConnectorAutofac;
+//using Steeltoe.CloudFoundry.Connector.EF6Autofac;
+using Steeltoe.CloudFoundry.Connector.EF6Autofac;
+using Lab03.Models;
 
-
+//using Lab03.Models;
 
 namespace Lab03
 {
@@ -27,7 +26,8 @@ namespace Lab03
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            
+            
 
             /*step4*/
             ServerConfig.RegisterConfig("development");
@@ -36,9 +36,16 @@ namespace Lab03
             // Register all the controllers with Autofac
             builder.RegisterControllers(typeof(WebApiApplication).Assembly);
             builder.RegisterApiControllers(typeof(WebApiApplication).Assembly);
+            
+            builder.RegisterMySqlConnection(ServerConfig.Configuration);
+            
+            builder.RegisterDbContext<MovieContext>(ServerConfig.Configuration);
+            
+            //MySqlDbContextContainerBuilderExtensions.RegisterDbContext<MovieContext>(builder, ServerConfig.Configuration);
 
-            builder.RegisterDistributedRedisCache(ServerConfig.Configuration);
-         //  builder.RegisterRedisConnectionMultiplexer(ServerConfig.Configuration);
+            //builder.RegisterType<MovieContext>().InstancePerRequest();
+            //    builder.RegisterDistributedRedisCache(ServerConfig.Configuration);
+            //  builder.RegisterRedisConnectionMultiplexer(ServerConfig.Configuration);
 
             // Create the Autofac container
             var container = builder.Build();
@@ -46,7 +53,8 @@ namespace Lab03
             
             GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver((IContainer)container); //Set the WebApi DependencyResolver
 
-
+            // Initialize some data in MySql
+            SampleData.InitializeMySqlData(container);
         }
     }
 }
