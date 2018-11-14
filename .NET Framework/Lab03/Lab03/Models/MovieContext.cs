@@ -12,7 +12,6 @@ namespace Lab03.Models
         // Constructor to use on a DbConnection that is already opened
         public MovieContext(string connectionString) : base(connectionString)
         {
-          //  Database.SetInitializer<MovieContext>(new CreateDatabaseIfNotExists<MovieContext>());
             Database.SetInitializer(new MovieDBInitializer());
             //   this.Database.CreateIfNotExists();
         }
@@ -25,13 +24,11 @@ namespace Lab03.Models
     {
         protected override void Seed(MovieContext context)
         {
-            IList<Movie> defaultStandards = new List<Movie>();
-            defaultStandards.Add(new Movie() { Id = 1, DateCreated = System.DateTime.Now, Name = "test" });
-          //  defaultStandards.Add(new Standard() { StandardName = "Standard 1", Description = "First Standard" });
-          //defaultStandards.Add(new Standard() { StandardName = "Standard 2", Description = "Second Standard" });
-          // defaultStandards.Add(new Standard() { StandardName = "Standard 3", Description = "Third Standard" });
+            IList<Movie> movies = new List<Movie>();
+            movies.Add(new Movie() { Id = 1, DateCreated = System.DateTime.Now, Name = "Avengers" });
+            movies.Add(new Movie() { Id = 1, DateCreated = System.DateTime.Now, Name = "Six Sense" });
 
-            context.Movies.AddRange(defaultStandards);
+            context.Movies.AddRange(movies);
 
             base.Seed(context);
         }

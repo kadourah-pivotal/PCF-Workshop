@@ -16,11 +16,9 @@ namespace Lab03.Controllers
 {
     public class MoviesController : ApiController
     {
-
-        //  private IDistributedCache _cache;
-        // private IConnectionMultiplexer _conn;
-
+        
         private MovieContext _ctx;
+
         public MoviesController(MovieContext context)
         {
             _ctx = context;
@@ -52,12 +50,7 @@ namespace Lab03.Controllers
             movie.Name = "test";
             movie.DateCreated = DateTime.Now;
             _ctx.SaveChanges();
-
-
-
-
-
-            // _cache.SetString("key1", "test");
+            
         }
 
         // PUT api/<controller>/5
