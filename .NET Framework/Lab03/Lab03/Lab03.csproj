@@ -447,6 +447,7 @@
     </Content>
     <Content Include="appsettings.json" />
     <Content Include="manifest.yml" />
+    <Content Include="appsettings.development.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
