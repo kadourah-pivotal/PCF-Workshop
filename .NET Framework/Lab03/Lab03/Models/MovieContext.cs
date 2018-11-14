@@ -21,7 +21,7 @@ namespace Lab03.Models
         
     }
 
-    public class MovieDBInitializer : CreateDatabaseIfNotExists<MovieContext>
+    public class MovieDBInitializer : DropCreateDatabaseAlways<MovieContext>
     {
         protected override void Seed(MovieContext context)
         {

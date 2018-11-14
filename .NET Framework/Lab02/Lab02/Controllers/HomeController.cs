@@ -29,7 +29,7 @@ namespace Lab02.Controllers
             _logger.LogError("This is a {LogLevel} log", LogLevel.Error.ToString());
             _logger.LogCritical("This is a {LogLevel} log", LogLevel.Critical.ToString());
             return View();
-            return View();
+            
         }
 
         public ActionResult About()
