@@ -1,0 +1,9 @@
+﻿---
+applications:
+- name: Lab04
+  instances: 2
+  memory: 1G
+  disk_quota: 512M
+  buildpack: hwc_buildpack
+  stack: windows2016
+ 

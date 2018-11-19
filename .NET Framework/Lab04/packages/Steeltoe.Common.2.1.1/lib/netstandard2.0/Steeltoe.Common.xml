@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Steeltoe.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Steeltoe.Common.Configuration.PropertyPlaceholderHelper">
+            <summary>
+            Utility class for working with configuration values that have placeholders in them.
+            A placeholder takes the form of <code> ${some:config:reference?default_if_not_present}></code>
+            Note: This was "inspired" by the Spring class: PropertyPlaceholderHelper
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Configuration.PropertyPlaceholderHelper.ResolvePlaceholders(System.String,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            Replaces all placeholders of the form <code> ${some:config:reference?default_if_not_present}</code>
+            with the corresponding value from the supplied <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/>.
+            </summary>
+            <param name="property">the string containing one or more placeholders</param>
+            <param name="config">the configuration used for finding replace values.</param>
+            <param name="logger">optional logger</param>
+            <returns>the supplied value with the placeholders replaced inline</returns>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IDiscoveryClient.Description">
+            <summary>
+            Gets a human readable description of the implementation
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IDiscoveryClient.Services">
+            <summary>
+            Gets all known service Ids
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IDiscoveryClient.GetLocalServiceInstance">
+            <summary>
+             ServiceInstance with information used to register the local service
+            </summary>
+            <returns>The IServiceInstance</returns>
+        </member>
+        <member name="M:Steeltoe.Common.Discovery.IDiscoveryClient.GetInstances(System.String)">
+            <summary>
+             Get all ServiceInstances associated with a particular serviceId
+            </summary>
+            <param name="serviceId">the serviceId to lookup</param>
+            <returns>List of service instances</returns>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.ServiceId">
+            <summary>
+             Gets the service id as register by the DiscoveryClient
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Host">
+            <summary>
+            Gets the hostname of the registered ServiceInstance
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Port">
+            <summary>
+            Gets the port of the registered ServiceInstance
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.IsSecure">
+            <summary>
+            Gets a value indicating whether if the port of the registered ServiceInstance is https or not
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Uri">
+            <summary>
+            Gets the service uri address
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.Discovery.IServiceInstance.Metadata">
+            <summary>
+             Gets the key value pair metadata associated with the service instance
+            </summary>
+        </member>
+        <member name="T:Steeltoe.Common.HealthChecks.HealthCheckResult">
+            <summary>
+            The result of a health check
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.HealthCheckResult.Status">
+            <summary>
+            Gets or sets the status of the check
+            </summary>
+            <remarks>Used by HealthMiddleware to determine HTTP Status code</remarks>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.HealthCheckResult.Description">
+            <summary>
+            Gets or sets a description of the health check result
+            </summary>
+            <remarks>Currently only used on check failures</remarks>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.HealthCheckResult.Details">
+            <summary>
+            Gets or sets details of the checked item
+            </summary>
+            <remarks>For parity with Spring Boot, repeat status [with a call to .ToString()] here</remarks>
+        </member>
+        <member name="T:Steeltoe.Common.HealthChecks.IHealthContributor">
+            <summary>
+            Implement this interface and add to DI to be included in health checks
+            </summary>
+        </member>
+        <member name="P:Steeltoe.Common.HealthChecks.IHealthContributor.Id">
+            <summary>
+            Gets an identifier for the type of check being performed
+            </summary>
+        </member>
+        <member name="M:Steeltoe.Common.HealthChecks.IHealthContributor.Health">
+            <summary>
+            Check the health of a resource
+            </summary>
+            <returns>The result of checking the health of a resource</returns>
+        </member>
+    </members>
+</doc>

@@ -7,4 +7,3 @@ applications:
   buildpack: hwc_buildpack
   stack: windows2016
   health-check-type: process
- 

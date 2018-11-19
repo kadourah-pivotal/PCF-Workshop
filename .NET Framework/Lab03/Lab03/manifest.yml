@@ -1,7 +1,7 @@
 ﻿---
 applications:
 - name: Lab03
-  instances: 1
+  instances: 2
   memory: 1G
   disk_quota: 512M
   buildpack: hwc_buildpack

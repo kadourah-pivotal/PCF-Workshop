@@ -1,0 +1,4 @@
+---
+applications:
+- name: Lab01
+  stack: windows2016
