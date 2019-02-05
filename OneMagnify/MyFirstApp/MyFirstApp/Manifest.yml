@@ -1,0 +1,7 @@
+﻿---
+applications:
+- name: OneMagnifyLab1-cal
+  instances: 2
+  memory: 1G
+  disk_quota: 512M
+  health-check-type: process

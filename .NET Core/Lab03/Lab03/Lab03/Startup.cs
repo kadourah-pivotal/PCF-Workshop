@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 using Steeltoe.Extensions.Configuration;
 using Steeltoe.CloudFoundry.Connector.MySql.EFCore;
-
+using Steeltoe.Extensions.Configuration.CloudFoundry;
 using Microsoft.EntityFrameworkCore;
 
 using Lab03.Data;
@@ -28,7 +28,7 @@ namespace Lab03
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-               //.AddCloudFoundry()
+                .AddCloudFoundry()
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
         }

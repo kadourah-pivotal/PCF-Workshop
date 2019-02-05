@@ -1,0 +1,8 @@
+﻿---
+applications:
+- name: Lab03-Core
+  buildpacks:
+   - dotnet_core_buildpack
+  memory: 512M
+  env:
+    ASPNETCORE_ENVIRONMENT: Development
