@@ -1,0 +1,7 @@
+---
+applications:
+- name: articulate
+  instances: 1
+  memory: 1G
+  disk_quota: 512M
+  health-check-type: process
