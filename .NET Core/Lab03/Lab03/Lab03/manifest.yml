@@ -1,6 +1,6 @@
 ﻿---
 applications:
-- name: Lab03-Core
+- name: dbapp-Core
   buildpacks:
    - dotnet_core_buildpack
   memory: 512M
